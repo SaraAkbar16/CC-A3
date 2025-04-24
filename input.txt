@@ -1,0 +1,5 @@
+A -> + T A | ε
+B -> * F B | ε
+E -> T A
+F -> id | (E)
+T -> F B

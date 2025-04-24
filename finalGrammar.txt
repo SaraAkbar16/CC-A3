@@ -1,0 +1,6 @@
+Final Grammar after removing left recursion:
+E -> T A
+A -> + T A  | #
+T -> F B
+B -> * F B  | #
+F -> id  | ( E )

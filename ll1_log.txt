@@ -1,0 +1,29 @@
+Stack top: E, Current Token: id
+Apply rule: E -> T A
+Stack top: T, Current Token: id
+Apply rule: T -> F B
+Stack top: F, Current Token: id
+Apply rule: F -> id
+Stack top: id, Current Token: id
+Stack top: B, Current Token: +
+Apply rule: B -> #
+Stack top: A, Current Token: +
+Apply rule: A -> + T A
+Stack top: +, Current Token: +
+Stack top: T, Current Token: id
+Apply rule: T -> F B
+Stack top: F, Current Token: id
+Apply rule: F -> id
+Stack top: id, Current Token: id
+Stack top: B, Current Token: *
+Apply rule: B -> * F B
+Stack top: *, Current Token: *
+Stack top: F, Current Token: id
+Apply rule: F -> id
+Stack top: id, Current Token: id
+Stack top: B, Current Token: $
+Apply rule: B -> #
+Stack top: A, Current Token: $
+Apply rule: A -> #
+Stack top: $, Current Token: $
+String parsed successfully.
