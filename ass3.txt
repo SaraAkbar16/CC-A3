@@ -1,2 +1,1 @@
-id + id
-id + id * id
+a a a a b

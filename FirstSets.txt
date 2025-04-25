@@ -1,6 +1,4 @@
 FIRST sets:
-FIRST(A) = { # + }
-FIRST(B) = { # * }
-FIRST(E) = { ( id }
-FIRST(F) = { ( id }
-FIRST(T) = { ( id }
+FIRST(A) = { # a }
+FIRST(B) = { # b }
+FIRST(S) = { a b }

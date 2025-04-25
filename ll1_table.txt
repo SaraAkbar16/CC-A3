@@ -1,18 +1,9 @@
-F
-( -> F -> ( E )
-id -> F -> id
-E
-id -> E -> T A
-( -> E -> T A
-T
-id -> T -> F B
-( -> T -> F B
+S
+b -> S -> b B
+a -> S -> a A
 B
-) -> B -> #
 $ -> B -> #
-+ -> B -> #
-* -> B -> * F B
+b -> B -> b S
 A
-) -> A -> #
 $ -> A -> #
-+ -> A -> + T A
+a -> A -> a S

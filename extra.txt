@@ -1,0 +1,62 @@
+Program     -> StmtList
+StmtList    -> Stmt StmtList | ε
+Stmt        -> DeclStmt | AssignStmt | IfStmt
+DeclStmt    -> Type ID ;
+AssignStmt  -> ID = Expr ;
+IfStmt      -> if (Cond) { StmtList } ElsePart
+ElsePart    -> else { StmtList } | ε
+Cond        -> Expr RelOp Expr
+RelOp       -> == | != | < | > 
+Expr        -> Term Expr_prime
+Expr_prime  -> + Term Expr_prime | - Term Expr_prime | ε
+Term        -> Factor Term_prime
+Term_prime  -> * Factor Term_prime | / Factor Term_prime | ε
+Factor      -> ( Expr ) | ID | NUM | CHAR
+Type        -> int | float | char
+ID         -> Letter LetterDigit*
+Letter      -> a 
+LetterDigit -> Letter | Digit
+Digit       -> 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+NUM         -> Digit +  
+CHAR        -> 'a' 
+
+
+
+program -> stmt-sequence
+stmt-sequence   ->  statement { ; statement }
+statement   -> if-stmt | repeat-stmt | assign-stmt | read-stmt | write-stmt
+if-stmt -> if exp then stmt-sequence [ else stmt-sequence ] end
+repeat-stmt -> repeat stmt-sequence until exp
+assign-stmt -> identifier := exp
+read-stmt   -> read identifier
+write-stmt  -> write exp
+exp -> simple-exp [ comparison-op simple-exp ]
+comparison-op   -> < | =
+simple-exp  -> term { addop term }
+addop   -> + | -
+term    -> factor { mulop factor }
+mulop   -> * | /
+factor  -> ( exp ) | number | identifier
+
+
+program -> stmt_sequence
+stmt_sequence   -> statement stmt_sequence_tail  
+stmt_sequence_tail  -> ; statement stmt_sequence_tail | ε
+statement   -> if_stmt | repeat_stmt | assign_stmt | dance_stmt | write_stmt
+if_stmt -> if exp then stmt_sequence else_part end  
+else_part   -> else stmt_sequence | ε
+repeat_stmt -> repeat stmt_sequence until exp
+assign_stmt -> identifier := exp
+dance_stmt   -> read identifier
+write_stmt  -> write exp
+exp -> simple_exp exp_tail  
+exp_tail    -> comparison_op simple_exp | ε
+comparison_op   -> < | =
+simple_exp  -> term simple_exp_tail  
+simple_exp_tail -> addop term simple_exp_tail | ε
+addop   -> + | -
+term    -> factor term_tail  
+term_tail   -> mulop factor term_tail | ε
+mulop   -> * | /
+factor  -> ( exp ) | number | identifier
+identifier  -> x | y

@@ -98,23 +98,23 @@ void printCFG(const vector<pair<string, Production>>& cfg) {
         return;
     }
 
-    cout << "\nFinal Grammar after removing left recursion:\n";
+   // cout << "\nFinal Grammar after removing left recursion:\n";
     outputFile << "Final Grammar after removing left recursion:\n";
 
     for (const auto& [nonTerminal, prod] : cfg) {
-        cout << prod.lhs << " -> ";
+        //cout << prod.lhs << " -> ";
         outputFile << prod.lhs << " -> ";
 
         for (size_t i = 0; i < prod.rhs.size(); ++i) {
-            cout << prod.rhs[i];
+           // cout << prod.rhs[i];
             outputFile << prod.rhs[i];
 
             if (i < prod.rhs.size() - 1) {
-                cout << " | ";
+               // cout << " | ";
                 outputFile << " | ";
             }
         }
-        cout << endl;
+//cout << endl;
         outputFile << endl;
     }
 

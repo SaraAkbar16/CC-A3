@@ -71,7 +71,7 @@ void displayStack(const stack<string>& parseStack) {
 void parseStringWithLL1FromFileTable(const string& input, const map<string, map<string, string>>& table) {
     stack<string> parseStack;
     parseStack.push("$");
-    parseStack.push("E");  // Assuming E is the start symbol
+    parseStack.push("S");  // Assuming S is the start symbol
 
     string inputStr = input + " $";
     stringstream ss(inputStr);
@@ -102,6 +102,14 @@ void parseStringWithLL1FromFileTable(const string& input, const map<string, map<
 
         // Display the current stack
         displayStack(parseStack);
+
+        // Check if stack has only one element and it is "$"
+        if (parseStack.size() == 1 && top == "$" && currentToken == "$") {
+            logFile << "String parsed successfully.\n";
+            cout << "String parsed successfully.\n";
+            logFile.close();
+            return;
+        }
 
         // Terminal or $ (Handle matching terminal and stack)
         if (top == currentToken) {

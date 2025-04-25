@@ -1,19 +1,19 @@
-Stack top: E, Current Token: id
-Apply rule: E -> T A
-Stack top: T, Current Token: id
-Apply rule: T -> F B
-Stack top: F, Current Token: id
-Apply rule: F -> id
-Stack top: id, Current Token: id
-Stack top: B, Current Token: +
+Stack top: S, Current Token: a
+Apply rule: S -> a A
+Stack top: a, Current Token: a
+Stack top: A, Current Token: a
+Apply rule: A -> a S
+Stack top: a, Current Token: a
+Stack top: S, Current Token: a
+Apply rule: S -> a A
+Stack top: a, Current Token: a
+Stack top: A, Current Token: a
+Apply rule: A -> a S
+Stack top: a, Current Token: a
+Stack top: S, Current Token: b
+Apply rule: S -> b B
+Stack top: b, Current Token: b
+Stack top: B, Current Token: $
 Apply rule: B -> #
-Stack top: A, Current Token: +
-Apply rule: A -> + T A
-Stack top: +, Current Token: +
-Stack top: T, Current Token: id
-Apply rule: T -> F B
-Stack top: F, Current Token: id
-Apply rule: F -> id
-Stack top: id, Current Token: id
-Stack top: B, Current Token: id
-Error: No rule for [B] with input [id]
+Stack top: $, Current Token: $
+String parsed successfully.

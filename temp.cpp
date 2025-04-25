@@ -430,7 +430,7 @@ int main() {
     // Step 5: Read the left-factored CFG and eliminate left recursion
     vector<pair<string, Production>> cfg = readCFG("tempLeftFactored.txt");
     eliminateLeftRecursion(cfg);
-    //printCFG(cfg);
+    printCFG(cfg);
     // Step 6: Convert cfg to formattedCFG for First/Follow
     map<string, vector<vector<string>>> formattedCFG;
     for (const auto& [lhs, prod] : cfg) {
