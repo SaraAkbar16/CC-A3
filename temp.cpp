@@ -350,8 +350,6 @@ void displayLL1ActionTable(
     }
 }
 
-#include <fstream>
-
 void saveLL1ActionTableToFile(
     const unordered_map<string, unordered_map<string, string>>& table,
     const string& filename
@@ -372,6 +370,28 @@ void saveLL1ActionTableToFile(
     outFile.close();
     cout << "LL(1) action table saved to " << filename << endl;
 }
+string readInputAndParse(const string& inputFileName, const string& tableFileName) {
+    ifstream inputFile(inputFileName);
+    if (!inputFile.is_open()) {
+        cerr << "Error: Unable to open input file: " << inputFileName << endl;
+        return "";
+    }
+
+    stringstream inputBuffer;
+    string inputLine;
+    while (getline(inputFile, inputLine)) {
+        inputBuffer << inputLine << '\n'; // Preserve newlines if needed
+    }
+    inputFile.close();
+
+    string fullInput = inputBuffer.str();
+
+    loadInputTokens(fullInput);
+    // parseStringWithLL1FromFileTable(fullInput, tableFileName); // Uncomment if using
+
+    return fullInput;
+}
+
 
 int main() {
     vector<string> left_production, right_production;
@@ -410,7 +430,7 @@ int main() {
     // Step 5: Read the left-factored CFG and eliminate left recursion
     vector<pair<string, Production>> cfg = readCFG("tempLeftFactored.txt");
     eliminateLeftRecursion(cfg);
-    printCFG(cfg);
+    //printCFG(cfg);
     // Step 6: Convert cfg to formattedCFG for First/Follow
     map<string, vector<vector<string>>> formattedCFG;
     for (const auto& [lhs, prod] : cfg) {
@@ -468,9 +488,10 @@ int main() {
     //     {"A", {{"+", "+ T A"}, {")", "#"}, {"id", "#"}, {"$", "#"}}}
     // };
     map<string, map<string, string>> parsingTable = loadParsingTable("ll1_Table.txt");
-     string input = "id + id * id";
-     loadInputTokens(input);
- 
-     parseStringWithLL1FromFileTable(input, parsingTable);
+    // string input = "id * id * id + id * id + id";
+    // loadInputTokens(input);
+    string parsedInput = readInputAndParse("ass3.txt", "ll1_Table.txt");
+    cout << "Parsed Input String: " << parsedInput << endl;
+     parseStringWithLL1FromFileTable(parsedInput, parsingTable);
     return 0;
 }
